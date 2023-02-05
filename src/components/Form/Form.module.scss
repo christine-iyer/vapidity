@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 :root {
      margin: 2rem;
      padding: 2rem;
@@ -20,11 +21,7 @@
 .btn {
      color: red;
 }
-$theme-colors:{
-     "primary"
-} {
-     background-color: red;
-}
+
 $theme-colors: (
     "primary": tomato
 );

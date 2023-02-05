@@ -1,5 +1,5 @@
 
-import styles from './Form.css'
+import  './Form.module.scss'
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -55,7 +55,7 @@ function FormIntake() {
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
 
-      <Button className= 'btn' variant="primary" type="submit">
+      <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>

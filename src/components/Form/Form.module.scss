@@ -20,4 +20,13 @@
 .btn {
      color: red;
 }
+$theme-colors:{
+     "primary"
+} {
+     background-color: red;
+}
+$theme-colors: (
+    "primary": tomato
+);
+
 

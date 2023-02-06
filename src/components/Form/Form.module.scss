@@ -1,15 +1,11 @@
-@import "~bootstrap/scss/bootstrap";
+
 :root {
      margin: 2rem;
      padding: 2rem;
      background-color: rgb(234,100,19);  
 
 }
-.div {
-     background-color: yellow;
 
-
-}
 
 .mb-3 {
 
@@ -18,12 +14,20 @@
      padding: 1rem;
 
 }
-.btn {
-     color: red;
+.button {
+     margin: 1rem;
+     padding: 1rem;
+    background-color: yellow;
+    color: tomato;
 }
 
-$theme-colors: (
-    "primary": tomato
-);
-
+.checkbox {
+     color:tomato
+}
+.option {
+     background-color: blueviolet;
+}
+.div{
+     border-radius: 5%;
+}
 

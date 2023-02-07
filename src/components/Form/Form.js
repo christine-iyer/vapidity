@@ -5,11 +5,10 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useState } from 'react';
-function FormIntake(props) {
-  const [blogEntry, setBlogEntry] = useState({
-    title: ''
-  })
+import { useState} from 'react';
+function FormIntake() {
+
+  const [blogEntry, setBlogEntry] = useState('')
 
   const handleChange = (evt) => {
     setBlogEntry(evt.target.value);
@@ -20,6 +19,8 @@ function FormIntake(props) {
         onSubmit={(e) => {
           e.preventDefault()
           setBlogEntry()
+          console.log(blogEntry)
+          
         }}
       >
         <Row className="mb-3">
@@ -28,7 +29,7 @@ function FormIntake(props) {
             <Form.Control
               className={styles.title}
               type="text"
-              value={blogEntry.title}
+              value={blogEntry}
               name='title'
               placeholder="Today's Title"
               onChange={handleChange}
@@ -95,6 +96,7 @@ function FormIntake(props) {
           variant="primary"
           type="submit"
           onChange={handleChange} 
+          value={blogEntry}
           >
           Submit
         </Button>

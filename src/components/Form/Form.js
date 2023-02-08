@@ -19,7 +19,7 @@ function FormIntake() {
         onSubmit={(e) => {
           e.preventDefault()
           setBlogEntry()
-          console.log(blogEntry)
+          
           
         }}
       >
@@ -29,13 +29,13 @@ function FormIntake() {
             <Form.Control
               className={styles.title}
               type="text"
-              value={blogEntry}
+              value={blogEntry.title}
               name='title'
               placeholder="Today's Title"
               onChange={handleChange}
             />
           </Form.Group>
-          {/* <Form.Group as={Col} controlId="formGridDate">
+          <Form.Group as={Col} controlId="formGridDate">
             <Form.Label>Date</Form.Label>
             <Form.Control
               className={styles.date}
@@ -45,16 +45,16 @@ function FormIntake() {
               placeholder="Today's Date"
               onChange={handleChange}
             />
-          </Form.Group> */}
+          </Form.Group>
 
-          {/* <Form.Group as={Col} controlId="formGridMood">
+          <Form.Group as={Col} controlId="formGridMood">
             <Form.Label
               className={styles.mood}>Mood</Form.Label>
             <Form.Select
               size="lg"
               defaultValue="Pick me a color"
               className={styles.select}
-              type="date"
+              type="string"
               value={blogEntry.mood}
               name='mood'
               placeholder="Today's Color"
@@ -65,10 +65,10 @@ function FormIntake() {
               <option>White</option>
               <option>Blue</option>
             </Form.Select>
-          </Form.Group> */}
+          </Form.Group>
         </Row>
 
-        {/* <Form.Group className="mb-3" controlId="formGridEntry">
+        <Form.Group className="mb-3" controlId="formGridEntry">
           <Form.Label>Blog Entry</Form.Label>
           <Form.Control
           className={styles.entry}
@@ -78,9 +78,9 @@ function FormIntake() {
           placeholder="Interestingly, ..."
           onChange={handleChange}
              />
-        </Form.Group> */}
+        </Form.Group>
 
-        {/* <Form.Group className="mb-3" id="formGridRead">
+        <Form.Group className="mb-3" id="formGridRead">
           <Form.Check
             className={styles.checkbox}
             type="checkbox"
@@ -90,7 +90,7 @@ function FormIntake() {
           placeholder="Interestingly, ..."
           onChange={handleChange}
           />
-        </Form.Group> */}
+        </Form.Group>
         <Button
           className={styles.button}
           variant="primary"

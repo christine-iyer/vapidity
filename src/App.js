@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Form from "./components/Form/Form";
-import Display from "./components/Display/Display";
+
 
 function App() {
 
@@ -13,9 +13,7 @@ function App() {
         <Form 
         />
       </div>
-      <div>
-        <Display />
-      </div>
+
     </div>
   );
 }

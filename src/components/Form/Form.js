@@ -4,22 +4,28 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 import 'bootstrap/dist/css/bootstrap.min.css'
+
 import { useState} from 'react';
 
 export default function Entry({ entry, completeEntry, editEntryText, deleteEntry }) {
   const [showInput, setShowInput] = useState(false)
   return (
-    <li>
-      <div className="left">
-        <h2
+    <Card style={{ width: '18rem',  margin: '1rem'}}>
+      <ListGroup variant="flush">
+        <ListGroup.Item><h2
           onClick={(e) => {
             setShowInput(!showInput)
           }}
         >
           {entry.text}
-        </h2>
-        <input
+        </h2></ListGroup.Item>
+
+
+        
+        <ListGroup.Item><input
           style={{ display: showInput ? "block" : "none" }}
           type="text"
           onKeyDown={(e) => {
@@ -28,9 +34,8 @@ export default function Entry({ entry, completeEntry, editEntryText, deleteEntry
               setShowInput(false)
             }
           }}
-        />
-      </div>
-      <label className="middle">
+        /> </ListGroup.Item>
+        <ListGroup.Item>      <label className="middle">
         Complete
         <input
           type="checkbox"
@@ -39,16 +44,17 @@ export default function Entry({ entry, completeEntry, editEntryText, deleteEntry
             completeEntry(entry.id, e)
           }}
         />
-      </label>
-      <button
+      </label></ListGroup.Item>
+      <ListGroup.Item><button
         checked={entry.completed}
         onClick={(e) => {
           deleteEntry(entry.id)
         }}
       >
         Delete Entry
-      </button>
-    </li>
+      </button></ListGroup.Item>
+      </ListGroup>
+    </Card>
   )
 }
 

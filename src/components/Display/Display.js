@@ -23,7 +23,10 @@ export default function BlogList({
           }}
         />
         </div>
+        
         {entries.length ? (
+
+          
           <>
 <div className="nowlist">
 

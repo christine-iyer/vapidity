@@ -2,16 +2,18 @@
 :root {
      margin: 2rem;
      padding: 2rem;
-     background-color: rgb(234,100,19);  
+     background-color: rgb(234, 148, 19);  
 
 }
-
+.text-muted {
+     font-weight: 300;
+}
 
 .mb-3 {
 
      border-radius: 5%;
-     margin: 1rem;
-     padding: 1rem;
+     margin: 2rem;
+     padding: 2rem;
 
 }
 .button {

@@ -1,11 +1,11 @@
 
 import Form from "./components/Form/Form";
-
+import Display from "./components/Display/Display";
 import { useState, useEffect } from "react"
-import Display from "./components/Display/Display"
-
-
-export default function App() {
+import Article from "./components/Assignment/Article";
+export default function App({
+  blog
+}) {
     const [entries, setEntries] = useState([])
 
     const addEntry = (e) => {
@@ -41,13 +41,14 @@ export default function App() {
 
   return (
     <div className="App">
-      <Display
-     entries={entries}
-        addEntry={addEntry}
-        completeEntry={completeEntry}
-        editEntryText={editEntryText}
-        deleteEntry={deleteEntry}
-      />
+
+      <Display />
+      <Article />
+    
+    
+
+      <>
+      </>
     </div>
   )
 }

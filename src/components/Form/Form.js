@@ -1,160 +1,123 @@
-
-import styles from './Form.module.scss'
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
+import  Image  from 'react-bootstrap/Image';
+import { useState } from 'react';
+import styles from './Form.module.scss'
 
-import { useState} from 'react';
-
-export default function Entry({ entry, completeEntry, editEntryText, deleteEntry }) {
-  const [showInput, setShowInput] = useState(false)
+function Create() {
+  const [date,setDate]= useState('')
+  const [title,setTitle]= useState('')
+  const [mood,setMood]= useState('')
+  const [image,setImage]= useState('')
+  const [body,setBody]= useState('')
+  const [check, setCheck] =useState('')
+  const handleSubmit =(e)=> {
+    e.preventDefault()
+    const blog = { date, title, body,mood, image, check}
+    console.log(blog)
+  }
   return (
-    <Card style={{ width: '18rem',  margin: '1rem'}}>
-      <ListGroup variant="flush">
-        <ListGroup.Item><h2
-          onClick={(e) => {
-            setShowInput(!showInput)
+    <Form onSubmit={handleSubmit}>
+      <Row>
+<Col>
+      <Form.Group className="mb-3" controlId="formBasicDate">
+        
+        <Form.Label>Date</Form.Label>
+        <Form.Control  placeholder="Blog Date" 
+        type='date'
+        required
+        value = {date}
+        onChange={(e)=> setDate(e.target.value)}/>
+        <Form.Text className="text-muted"
+        >
+        </Form.Text>
+      </Form.Group>
+      </Col>
+<Col>
+      <Form.Group className="mb-3" controlId="formBasicATitle">
+        <Form.Label>Title</Form.Label>
+        <Form.Control placeholder="Blog Title"
+        type='text'
+        required
+        value = {title}
+        onChange={(e)=> setTitle(e.target.value)} />
+        <Form.Text className="text-muted"
+        >
+          Something Catchy
+        </Form.Text>
+      </Form.Group>
+      </Col>
+
+<Col>
+      <Form.Group controlId="formBasicMood">
+        <Form.Label>Select Mood</Form.Label>
+        <Form.Control
+          as="select"
+          value={mood}
+          onChange={e => {
+            console.log("e.target.value", e.target.value);
+            setMood(e.target.value);
           }}
         >
-          {entry.text}
-        </h2></ListGroup.Item>
+          <option value="DICTUM">Dictamen</option>
+          <option value="CONSTANCY">Constancia</option>
+          <option value="COMPLEMENT">Complemento</option>
+        </Form.Control>
+      </Form.Group>
+      </Col>
 
-
+      <Col>
+      <Form.Group className="mb-3" controlId="formBasicImage">
         
-        <ListGroup.Item><input
-          style={{ display: showInput ? "block" : "none" }}
-          type="text"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              editEntryText(entry.id, e)
-              setShowInput(false)
-            }
-          }}
-        /> </ListGroup.Item>
-        <ListGroup.Item>      <label className="middle">
-        Complete
-        <input
-          type="checkbox"
-          checked={entry.completed}
-          onChange={(e) => {
-            completeEntry(entry.id, e)
-          }}
-        />
-      </label></ListGroup.Item>
-      <ListGroup.Item><button
-        checked={entry.completed}
-        onClick={(e) => {
-          deleteEntry(entry.id)
-        }}
-      >
-        Delete Entry
-      </button></ListGroup.Item>
-      </ListGroup>
-    </Card>
-  )
+        <Form.Label>Image Link</Form.Label>
+        <Form.Control  placeholder="Blog Image" 
+        type='text'
+        required
+        value = {image}
+        onChange={(e)=> setImage(e.target.value)}/>
+        <Form.Text className="text-muted"
+        >
+        </Form.Text>
+      </Form.Group>
+      </Col>
+      </Row>
+
+      <Form.Group className="mb-3" controlId="formBasicBody">
+        <Form.Label>Blog Body</Form.Label>
+        <Form.Control as="textarea" rows={3} placeholder="Blog Entry" type='text'
+        required
+        onChange={(e)=> setBody(e.target.value)}
+        value = {body}/>
+        <Form.Text className="text-muted"
+        >
+          Today's Blog is about...
+        </Form.Text>
+      </Form.Group>
+      <Button variant="primary" type="submit" >
+        Submit
+      </Button>
+
+      <Card style={{ width: '18rem' }}>
+  
+  <Card.Body>
+    <Card.Title>{title}</Card.Title>
+    <Card.Text>
+      {body}
+    </Card.Text>
+    
+  </Card.Body>
+</Card>
+      <p></p>
+
+
+
+
+
+    </Form>
+  );
 }
 
-// function FormIntake() {
-
-//   const [blogEntry, setBlogEntry] = useState('')
-
-//   const handleChange = (evt) => {
-//     setBlogEntry(evt.target.value);
-//   };
-//   return (
-//     <div className='div'>
-//       <Form className={styles.form}
-//         onSubmit={(e) => {
-//           e.preventDefault()
-//           setBlogEntry()
-          
-          
-//         }}
-//       >
-//         <Row className="mb-3">
-//           <Form.Group as={Col} controlId="formGridName">
-//             <Form.Label>Title</Form.Label>
-//             <Form.Control
-//               className={styles.title}
-//               type="text"
-//               value={blogEntry.title}
-//               name='title'
-//               placeholder="Today's Title"
-//               onChange={handleChange}
-//             />
-//           </Form.Group>
-//           <Form.Group as={Col} controlId="formGridDate">
-//             <Form.Label>Date</Form.Label>
-//             <Form.Control
-//               className={styles.date}
-//               type="date"
-//               value={blogEntry.date}
-//               name='date'
-//               placeholder="Today's Date"
-//               onChange={handleChange}
-//             />
-//           </Form.Group>
-
-//           <Form.Group as={Col} controlId="formGridMood">
-//             <Form.Label
-//               className={styles.mood}>Mood</Form.Label>
-//             <Form.Select
-//               size="lg"
-//               defaultValue="Pick me a color"
-//               className={styles.select}
-//               type="string"
-//               value={blogEntry.mood}
-//               name='mood'
-//               placeholder="Today's Color"
-//               options={blogEntry.mood} 
-//               onChange={handleChange}
-// >
-//               <option>Red...</option>
-//               <option>White</option>
-//               <option>Blue</option>
-//             </Form.Select>
-//           </Form.Group>
-//         </Row>
-
-//         <Form.Group className="mb-3" controlId="formGridEntry">
-//           <Form.Label>Blog Entry</Form.Label>
-//           <Form.Control
-//           className={styles.entry}
-//           type="text"
-//           value={blogEntry.entry}
-//           name='title'
-//           placeholder="Interestingly, ..."
-//           onChange={handleChange}
-//              />
-//         </Form.Group>
-
-//         <Form.Group className="mb-3" id="formGridRead">
-//           <Form.Check
-//             className={styles.checkbox}
-//             type="checkbox"
-//             label="Check me out" 
-//           value={blogEntry.like}
-//           name='like'
-//           placeholder="Interestingly, ..."
-//           onChange={handleChange}
-//           />
-//         </Form.Group>
-//         <Button
-//           className={styles.button}
-//           variant="primary"
-//           type="submit"
-//           onChange={handleChange} 
-//           value={blogEntry}
-//           >
-//           Submit
-//         </Button>
-//       </Form>
-//     </div>
-//   );
-// }
-
-// export default FormIntake;
+export default Create;
